@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 // Halaman utama untuk user (guest)
@@ -10,7 +11,7 @@ Route::get('/', function () {
 
 // Dashboard umum (user biasa)
 Route::get('/dashboard', function () {
-    return view('dashboard'); // view dashboard user
+    return view('user.dashboard'); // view dashboard user
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Dashboard admin
@@ -24,6 +25,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Routing katalog produk (CRUD otomatis dengan resource)
+Route::resource('products', ProductController::class)->middleware(['auth', 'verified']);
 
 // Auth routes (login, register, dll)
 require __DIR__.'/auth.php';
