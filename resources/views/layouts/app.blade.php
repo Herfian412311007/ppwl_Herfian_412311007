@@ -45,7 +45,7 @@
           @yield('content')
         </div>
 
-        {{-- Footer (pindah ke luar content-wrapper) --}}
+        {{-- Footer --}}
         @include('components.layout.footer')
       </div>
     </div>
@@ -69,5 +69,8 @@
 
   <!-- GitHub buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  {{-- Slot untuk script tambahan (misalnya SweetAlert) --}}
+  @stack('scripts')
 </body>
 </html>

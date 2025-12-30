@@ -9,9 +9,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama', 100);
-            $table->timestamps();
+            $table->id(); // kolom id auto increment
+            $table->string('name'); // nama kategori
+            $table->timestamps(); // created_at & updated_at
         });
     }
 

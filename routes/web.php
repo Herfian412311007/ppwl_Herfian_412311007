@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 // Halaman utama untuk user (guest)
@@ -28,6 +29,9 @@ Route::middleware('auth')->group(function () {
 
 // Routing katalog produk (CRUD otomatis dengan resource)
 Route::resource('products', ProductController::class)->middleware(['auth', 'verified']);
+
+// Routing kategori (CRUD otomatis dengan resource, hanya untuk user login)
+Route::resource('category', CategoryController::class)->middleware(['auth']);
 
 // Auth routes (login, register, dll)
 require __DIR__.'/auth.php';
